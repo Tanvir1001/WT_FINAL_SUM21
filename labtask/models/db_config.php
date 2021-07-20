@@ -9,8 +9,7 @@
     //responsible for running insert,update,delete
 	function execute($query){   
 		global $db_server,$db_username,$db_pass,$db_name;
-		$conn = mysqli_connect($db_server,$db_username,$db_pass,$db_name);
-		$query = mysqli_real_escape_string($conn, $query);
+		$conn=mysqli_connect($db_server,$db_username,$db_pass,$db_name);
 		if($conn){
 			if(mysqli_query($conn,$query)){
 				return true;

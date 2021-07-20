@@ -59,7 +59,7 @@
 		$err_db = $rs;
 		
 	}
-	else if (isset($_POST["edit_student"])){
+	elseif (isset($_POST["edit_student"])){
 		//Validation
 		if(empty($_POST["name"])){
             $hasError=true;
@@ -97,15 +97,15 @@
             $dept_name=$_POST["dept_name"];
         }
 		//if no error
-		$rs = updateStudent($name,$dateof_birth,$credit,$cgpa,$dept_name);
+		$rs=updateStudent($id,$name,$dateof_birth,$credit,$cgpa,$dept_name);
 		if($rs === true){
 			header("Location: Allstudent.php");
 		}
-		$err_db = $rs;
+		$err_db =$rs;
 	}
 	
 	function insertStudent($name,$dateof_birth,$credit,$cgpa,$dept_name){
-		$query="insert into students values (NULL,'$name','$dateof_birth','$credit','$cgpa''$dept_name')";
+		$query="insert into students values (NULL,'$name','$dateof_birth','$credit','$cgpa','$dept_name')";
 		return execute($query);
 	}
 	
@@ -119,9 +119,9 @@
 		$rs = get($query);
 		return $rs[0];	
 	}
-	function updateStudent($name,$id,$dateof_birth,$credit,$cgpa,$dept_name)
+	function updateStudent($id,$name,$dateof_birth,$credit,$cgpa,$dept_name)
 	{
-		$query = "update students set name='$name',dateof_birth='$dateof_birth',credit='$credit',cgpa='$cgpa',dept_name='$dept_name' where id = $id";
+		$query = "update students set name='$name', dateof_birth='$dateof_birth', credit='$credit', cgpa='$cgpa', dept_name='$dept_name' where id = $id";
 		return execute($query);
 	}
 

@@ -20,8 +20,8 @@
 	<h3>All Student</h3><br>
     <table  border=	"1px solid">
 		<thead>
-			<th>Name</th>
-			<th> Id</th>
+			<th>Id</th>
+			<th> Name</th>
 			<th>Date of Birth</th>
 			<th>Credit </th>
 			<th>Cgpa</th>
@@ -35,8 +35,8 @@
 				foreach($students as $s){
 					$id = $s["id"];
 					echo "<tr>";
-						echo "<td>".$s["name"]."</td>";
 						echo "<td>$i</td>";
+						echo "<td>".$s["name"]."</td>";
 						echo "<td>".$s["dateof_birth"]."</td>";
 						echo "<td>".$s["credit"]."</td>";
 						echo "<td>".$s["cgpa"]."</td>";
