@@ -1,11 +1,22 @@
 <?php
 	require_once 'models/db_config.php';
 	$err_db="";
-	
+	//validation variables
+	$name ="";
+	$err_name ="";
+	$hasError=false;
+
 	if(isset($_POST["add_category"])){
-		
+		// validations
+		if(empty($_POST["name"])){
+            $hasError=true;
+            $err_name="*Name Required";
+        }
+        else{
+            $name=$_POST["name"];
+        }
 		//if no error
-		$rs = insertCategory($_POST["name"]);
+		$rs = insertCategory($name);
 		if($rs === true){
 			header("Location: allcategories.php");
 		}
@@ -13,9 +24,16 @@
 		
 	}
 	else if (isset($_POST["edit_category"])){
-		
+		//validations
+		if(empty($_POST["name"])){
+            $hasError=true;
+            $err_name="*Name Required";
+        }
+        else{
+            $name=$_POST["name"];
+        }
 		//if no error
-		$rs = updateCategory($_POST["name"],$_POST["id"]);
+		$rs = updateCategory($name,$id);
 		if($rs === true){
 			header("Location: allcategories.php");
 		}
@@ -33,13 +51,13 @@
 		return $rs;
 	}
 	function getCategory($id){
-		$query = "select * from categories where id = $id";
+		$query = "select * from categories where id = '$id'";
 		$rs = get($query);
 		return $rs[0];	
 	}
 	function updateCategory($name,$id)
 	{
-		$query = "update categories set name='$name' where id = $id";
+		$query = "update categories set name='$name' where id = '$id'";
 		return execute($query);
 	}
 
