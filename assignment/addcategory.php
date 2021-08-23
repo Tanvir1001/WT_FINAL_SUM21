@@ -17,7 +17,7 @@
     <h5><?php echo $err_db; ?></h5>
     <h3>Add Category</h3>
     <form action="" method="post">
-        Name:<input type="text" name="name"  value="<?php echo $name;?>">
+        Name:<input type="text" name="name" value="<?php echo $name;?>">
         <span><?php echo $err_name;?></span> <br><br>
         <input type="submit" name="add_category"value="Add Category">
     </form>
